@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Elegant chess theme - warm cream and wood tones */
+    --background: 40 30% 96%;
+    --foreground: 30 20% 15%;
+
+    --card: 40 25% 93%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 25% 93%;
+    --popover-foreground: 30 20% 15%;
+
+    /* Deep forest green as primary */
+    --primary: 150 35% 25%;
+    --primary-foreground: 40 30% 96%;
+
+    /* Warm amber secondary */
+    --secondary: 35 60% 85%;
+    --secondary-foreground: 30 20% 15%;
+
+    --muted: 35 20% 88%;
+    --muted-foreground: 30 15% 45%;
+
+    /* Gold accent */
+    --accent: 42 75% 55%;
+    --accent-foreground: 30 20% 10%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 30% 96%;
+
+    --border: 35 25% 82%;
+    --input: 35 25% 82%;
+    --ring: 150 35% 25%;
+
+    --radius: 0.75rem;
+
+    /* Chess board colors */
+    --board-light: 35 45% 85%;
+    --board-dark: 25 35% 45%;
+    --board-highlight: 150 50% 45%;
+    --board-selected: 42 80% 60%;
+    --board-check: 0 70% 55%;
+    --board-last-move: 45 60% 70%;
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Outfit', system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-board: 0 25px 50px -12px rgba(30, 20, 10, 0.35);
+    --shadow-piece: 0 4px 12px rgba(30, 20, 10, 0.3);
+    --shadow-card: 0 10px 30px -10px rgba(30, 20, 10, 0.2);
+    --shadow-button: 0 4px 15px rgba(30, 20, 10, 0.15);
+
+    /* Gradients */
+    --gradient-board: linear-gradient(135deg, hsl(35 45% 88%), hsl(35 40% 80%));
+    --gradient-header: linear-gradient(180deg, hsl(40 30% 96%) 0%, hsl(40 25% 92%) 100%);
+
+    --sidebar-background: 40 25% 93%;
+    --sidebar-foreground: 30 20% 15%;
+    --sidebar-primary: 150 35% 25%;
+    --sidebar-primary-foreground: 40 30% 96%;
+    --sidebar-accent: 35 60% 85%;
+    --sidebar-accent-foreground: 30 20% 15%;
+    --sidebar-border: 35 25% 82%;
+    --sidebar-ring: 150 35% 25%;
+  }
+
+  .dark {
+    --background: 25 20% 10%;
+    --foreground: 35 30% 90%;
+
+    --card: 25 18% 14%;
+    --card-foreground: 35 30% 90%;
+
+    --popover: 25 18% 14%;
+    --popover-foreground: 35 30% 90%;
+
+    --primary: 150 40% 50%;
+    --primary-foreground: 25 20% 10%;
+
+    --secondary: 30 25% 22%;
+    --secondary-foreground: 35 30% 90%;
+
+    --muted: 25 18% 20%;
+    --muted-foreground: 35 20% 60%;
+
+    --accent: 42 70% 50%;
+    --accent-foreground: 25 20% 10%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 35 30% 90%;
+
+    --border: 25 18% 22%;
+    --input: 25 18% 22%;
+    --ring: 150 40% 50%;
+
+    --board-light: 30 25% 35%;
+    --board-dark: 25 20% 20%;
+    --board-highlight: 150 45% 40%;
+    --board-selected: 42 70% 50%;
+    --board-check: 0 60% 45%;
+    --board-last-move: 42 50% 35%;
+
+    --shadow-board: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-piece: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+    --shadow-button: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    --gradient-board: linear-gradient(135deg, hsl(30 20% 18%), hsl(25 18% 14%));
+    --gradient-header: linear-gradient(180deg, hsl(25 20% 10%) 0%, hsl(25 18% 14%) 100%);
+
+    --sidebar-background: 25 18% 14%;
+    --sidebar-foreground: 35 30% 90%;
+    --sidebar-primary: 150 40% 50%;
+    --sidebar-primary-foreground: 25 20% 10%;
+    --sidebar-accent: 30 25% 22%;
+    --sidebar-accent-foreground: 35 30% 90%;
+    --sidebar-border: 25 18% 22%;
+    --sidebar-ring: 150 40% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .board-shadow {
+    box-shadow: var(--shadow-board);
+  }
+
+  .piece-shadow {
+    filter: drop-shadow(0 3px 6px rgba(30, 20, 10, 0.4));
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .button-shadow {
+    box-shadow: var(--shadow-button);
+  }
+}
+
+@layer components {
+  .chess-square-light {
+    background-color: hsl(var(--board-light));
+  }
+
+  .chess-square-dark {
+    background-color: hsl(var(--board-dark));
+  }
+
+  .chess-square-highlight {
+    background-color: hsl(var(--board-highlight) / 0.6);
+  }
+
+  .chess-square-selected {
+    background-color: hsl(var(--board-selected) / 0.7);
+  }
+
+  .chess-square-check {
+    background-color: hsl(var(--board-check) / 0.6);
+  }
+
+  .chess-square-last-move {
+    background-color: hsl(var(--board-last-move) / 0.5);
+  }
+}
